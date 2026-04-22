@@ -1,0 +1,9 @@
+# .gitignore
+node_modules/
+sistema.sqlite
+sistema.sqlite-journal
+sistema.sqlite-wal
+sistema.sqlite-shm
+.env
+.DS_Store
+Thumbs.db
