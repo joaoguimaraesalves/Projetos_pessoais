@@ -76,3 +76,105 @@ th { background-color: #0B1120; color: var(--text-muted); }
 .form-group select { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid var(--border-color); background-color: var(--bg-dark); color: white; font-size: 1rem; outline: none; }
 
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
+
+/* ===== Compras: linhas de item dentro do modal ===== */
+.compra-itens-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.compra-item-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 100px 32px;
+    gap: 8px;
+    align-items: center;
+}
+.compra-item-row input,
+.compra-item-row select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-dark);
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+}
+.btn-remover-item {
+    background: transparent;
+    color: var(--color-red);
+    border: 1px solid var(--color-red);
+    border-radius: 4px;
+    cursor: pointer;
+    height: 36px;
+    font-size: 1.1rem;
+    padding: 0;
+}
+.btn-remover-item:hover { background: var(--color-red); color: white; }
+
+/* ===== Badges de status e tipo ===== */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.badge-pendente { background: rgba(245, 158, 11, 0.2); color: var(--color-orange); }
+.badge-paga     { background: rgba(16, 185, 129, 0.2); color: var(--color-green); }
+.badge-vencida  { background: rgba(239, 68, 68, 0.2);  color: var(--color-red); }
+.badge-entrada  { background: rgba(16, 185, 129, 0.2); color: var(--color-green); }
+.badge-saida    { background: rgba(239, 68, 68, 0.2);  color: var(--color-red); }
+.badge-ajuste   { background: rgba(168, 85, 247, 0.2); color: var(--color-purple); }
+
+/* ===== Botão pequeno verde (marcar como paga) ===== */
+.btn-pagar {
+    background-color: transparent;
+    color: var(--color-green);
+    border: 1px solid var(--color-green);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+.btn-pagar:hover { background-color: var(--color-green); color: white; }
+
+/* ===== Modal largo (compra) ===== */
+.modal-wide { width: 600px; max-width: 95%; }
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+.form-row .form-group { flex: 1; }
+
+.itens-compra {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.compra-total {
+    padding: 12px;
+    background: var(--bg-dark);
+    border-radius: 6px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+}
+.compra-total span { color: var(--color-blue); font-weight: bold; }
+
+/* ===== Filtros de tela (select estilizado como botão) ===== */
+.select-filtro {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}

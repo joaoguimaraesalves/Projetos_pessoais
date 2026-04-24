@@ -11,12 +11,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const db = initDb();
 
-// Cada módulo de rotas recebe a conexão do banco por injeção.
-// Isso facilita testes e evita uma variável "db" global.
-app.use('/api/dashboard', require('./routes/dashboard')(db));
-app.use('/api/produtos',  require('./routes/produtos')(db));
-app.use('/api/vendas',    require('./routes/vendas')(db));
-app.use('/api/saidas',    require('./routes/saidas')(db));
+app.use('/api/dashboard',    require('./routes/dashboard')(db));
+app.use('/api/produtos',     require('./routes/produtos')(db));
+app.use('/api/vendas',       require('./routes/vendas')(db));
+app.use('/api/saidas',       require('./routes/saidas')(db));
+app.use('/api/compras',      require('./routes/compras')(db));
+app.use('/api/contas-pagar', require('./routes/contas-pagar')(db));
+app.use('/api/estoque',      require('./routes/estoque')(db));
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 

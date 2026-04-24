@@ -5,10 +5,13 @@ function mudarTela(nomeTela) {
     document.getElementById(`tela-${nomeTela}`).classList.add('active');
     document.getElementById(`menu-${nomeTela}`).classList.add('active');
 
-    if (nomeTela === 'dashboard') { carregarDashboard(); desenharGrafico(); }
-    if (nomeTela === 'produtos')  carregarProdutos();
-    if (nomeTela === 'vendas')    carregarVendas();
-    if (nomeTela === 'saidas')    carregarSaidas();
+    if (nomeTela === 'dashboard')    { carregarDashboard(); desenharGrafico(); }
+    if (nomeTela === 'produtos')     carregarProdutos();
+    if (nomeTela === 'vendas')       carregarVendas();
+    if (nomeTela === 'compras')      carregarCompras();
+    if (nomeTela === 'contas-pagar') carregarContasPagar();
+    if (nomeTela === 'movimentos')   carregarMovimentos();
+    if (nomeTela === 'saidas')       carregarSaidas();
 }
 
 // Inicialização
