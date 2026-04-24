@@ -51,8 +51,9 @@ async function salvarVenda(event) {
 
     event.target.reset();
     fecharModal('modal-venda');
-    carregarDashboard();
-    desenharGrafico();
+        if (document.getElementById('tela-dashboard').classList.contains('active')) {
+            atualizarDashboardCompleto();
+        }
     if (document.getElementById('tela-vendas').classList.contains('active'))   carregarVendas();
     if (document.getElementById('tela-produtos').classList.contains('active')) carregarProdutos();
 }

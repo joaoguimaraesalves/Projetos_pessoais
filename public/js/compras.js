@@ -178,8 +178,9 @@ async function excluirCompra(id) {
     }
 
     carregarCompras();
-    carregarDashboard();
-    desenharGrafico();
+    if (document.getElementById('tela-dashboard').classList.contains('active')) {
+        atualizarDashboardCompleto();
+    }
     await carregarParaDropdown();
     if (document.getElementById('tela-contas-pagar').classList.contains('active')) carregarContasPagar();
     if (document.getElementById('tela-produtos').classList.contains('active'))     carregarProdutos();

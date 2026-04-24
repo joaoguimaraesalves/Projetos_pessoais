@@ -25,6 +25,7 @@ async function salvarGasto(event) {
     event.target.reset();
     fecharModal('modal-gasto');
     carregarSaidas();
-    carregarDashboard();
-    desenharGrafico();
+    if (document.getElementById('tela-dashboard').classList.contains('active')) {
+        atualizarDashboardCompleto();
+    }
 }

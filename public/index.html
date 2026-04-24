@@ -23,23 +23,70 @@
     </aside>
 
     <main class="main-content">
-        <!-- Dashboard -->
-        <div id="tela-dashboard" class="tela active">
-            <div class="header">
-                <h2>Dashboard JV Imports</h2>
-                <button class="btn-green" onclick="abrirModalVenda()">+ Nova Venda Rápida</button>
+<!-- Dashboard -->
+<div id="tela-dashboard" class="tela active">
+    <div class="header">
+        <h2>Dashboard JV Imports</h2>
+        <div style="display: flex; gap: 10px;">
+            <select id="filtro-periodo" class="select-filtro" onchange="atualizarDashboardCompleto()">
+                <option value="total">Tudo</option>
+                <option value="hoje">Hoje</option>
+                <option value="7d">Últimos 7 dias</option>
+                <option value="30d" selected>Últimos 30 dias</option>
+                <option value="mes">Este mês</option>
+                <option value="ano">Este ano</option>
+            </select>
+            <button class="btn-green" onclick="abrirModalVenda()">+ Nova Venda Rápida</button>
+        </div>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card bg-green"><div class="card-header"><span>Lucro Líquido</span></div><div class="card-value" id="val-lucro">R$ 0,00</div></div>
+        <div class="card bg-blue"><div class="card-header"><span>Total em Vendas</span></div><div class="card-value" id="val-vendas">R$ 0,00</div></div>
+        <div class="card bg-red"><div class="card-header"><span>Despesas Totais</span></div><div class="card-value" id="val-despesas">R$ 0,00</div></div>
+        <div class="card bg-purple"><div class="card-header"><span>Qtd. Vendida</span></div><div class="card-value" id="val-qtd">0</div></div>
+        <div class="card bg-orange"><div class="card-header"><span>Ticket Médio</span></div><div class="card-value" id="val-ticket">R$ 0,00</div></div>
+        <div class="card bg-red"><div class="card-header"><span>Custos de Produto</span></div><div class="card-value" id="val-custos">R$ 0,00</div></div>
+        <div class="card bg-green"><div class="card-header"><span>Margem</span></div><div class="card-value" id="val-margem">0.0%</div></div>
+    </div>
+
+    <div class="dashboard-row">
+        <div class="chart-container" style="flex: 2;">
+            <div class="chart-header">
+                <h3>Evolução</h3>
+                <div class="toggle-group">
+                    <button class="toggle-btn active" data-agrupar="dia" onclick="mudarAgrupamento('dia')">Por dia</button>
+                    <button class="toggle-btn" data-agrupar="mes" onclick="mudarAgrupamento('mes')">Por mês</button>
+                </div>
             </div>
-            <div class="chart-container"><canvas id="graficoEvolucao" height="80"></canvas></div>
-            <div class="cards-grid">
-                <div class="card bg-green"><div class="card-header"><span>Lucro Líquido</span></div><div class="card-value" id="val-lucro">R$ 0,00</div></div>
-                <div class="card bg-blue"><div class="card-header"><span>Total em Vendas</span></div><div class="card-value" id="val-vendas">R$ 0,00</div></div>
-                <div class="card bg-red"><div class="card-header"><span>Saídas/Gastos</span></div><div class="card-value" id="val-saidas">R$ 0,00</div></div>
-                <div class="card bg-purple"><div class="card-header"><span>Qtd. Vendida</span></div><div class="card-value" id="val-qtd">0</div></div>
-                <div class="card bg-orange"><div class="card-header"><span>Ticket Médio</span></div><div class="card-value" id="val-ticket">R$ 0,00</div></div>
-                <div class="card bg-red"><div class="card-header"><span>Custos Totais</span></div><div class="card-value" id="val-custos">R$ 0,00</div></div>
-                <div class="card bg-green"><div class="card-header"><span>Margem</span></div><div class="card-value" id="val-margem">0.0%</div></div>
+            <div class="grafico-wrapper">
+                <canvas id="graficoEvolucao"></canvas>
             </div>
         </div>
+
+        <div class="chart-container" style="flex: 1;">
+            <h3 style="margin-bottom: 15px;">Próximas Contas a Pagar</h3>
+            <div id="lista-proximas-contas"></div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="chart-header">
+            <h3>Top Produtos</h3>
+            <div class="toggle-group">
+                <button class="toggle-btn active" data-por="qtd"         onclick="mudarOrdemTop('qtd')">Por Quantidade</button>
+                <button class="toggle-btn" data-por="faturamento" onclick="mudarOrdemTop('faturamento')">Por Faturamento</button>
+                <button class="toggle-btn" data-por="lucro"       onclick="mudarOrdemTop('lucro')">Por Lucro</button>
+            </div>
+        </div>
+        <table style="margin-top: 10px;">
+            <thead>
+                <tr><th>#</th><th>Produto</th><th>Qtd. Vendida</th><th>Faturamento</th><th>Lucro</th></tr>
+            </thead>
+            <tbody id="lista-top-produtos"></tbody>
+        </table>
+    </div>
+</div>
 
         <!-- Produtos -->
         <div id="tela-produtos" class="tela">

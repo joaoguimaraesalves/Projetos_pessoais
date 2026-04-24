@@ -5,7 +5,7 @@ function mudarTela(nomeTela) {
     document.getElementById(`tela-${nomeTela}`).classList.add('active');
     document.getElementById(`menu-${nomeTela}`).classList.add('active');
 
-    if (nomeTela === 'dashboard')    { carregarDashboard(); desenharGrafico(); }
+    if (nomeTela === 'dashboard')    atualizarDashboardCompleto();
     if (nomeTela === 'produtos')     carregarProdutos();
     if (nomeTela === 'vendas')       carregarVendas();
     if (nomeTela === 'compras')      carregarCompras();
@@ -15,6 +15,5 @@ function mudarTela(nomeTela) {
 }
 
 // Inicialização
-carregarDashboard();
-desenharGrafico();
+atualizarDashboardCompleto();
 carregarParaDropdown();

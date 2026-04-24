@@ -178,3 +178,87 @@ th { background-color: #0B1120; color: var(--text-muted); }
     cursor: pointer;
     font-size: 0.95rem;
 }
+
+/* ===== Dashboard: linha com 2 cards lado a lado ===== */
+.dashboard-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.dashboard-row .chart-container {
+    margin-bottom: 0;
+}
+
+/* Adapta em telas menores */
+@media (max-width: 900px) {
+    .dashboard-row { flex-direction: column; }
+}
+
+/* ===== Cabeçalho de cada bloco (gráfico, top) ===== */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.chart-header h3 { font-size: 1rem; color: var(--text-muted); }
+
+/* ===== Botões de toggle (dia/mês, top por X) ===== */
+.toggle-group {
+    display: inline-flex;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.toggle-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.15s;
+}
+.toggle-btn:hover { color: var(--text-main); }
+.toggle-btn.active {
+    background: var(--color-green);
+    color: white;
+    font-weight: bold;
+}
+
+/* ===== Lista de próximas contas ===== */
+.proxima-conta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+.proxima-conta:last-child { border-bottom: none; }
+.proxima-conta-info { display: flex; flex-direction: column; }
+.proxima-conta-desc { font-weight: bold; font-size: 0.9rem; }
+.proxima-conta-data { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+.proxima-conta-valor { color: var(--color-red); font-weight: bold; }
+
+/* ===== Fix: select com tema escuro (Windows/Chrome ignoravam o CSS anterior) ===== */
+.select-filtro,
+.select-filtro option {
+    background-color: var(--bg-panel);
+    color: var(--text-main);
+}
+.select-filtro option {
+    padding: 8px;
+}
+
+/* Alguns browsers no Windows só respeitam cor do dropdown se definirmos no select nativo */
+select {
+    color-scheme: dark;
+}
+
+/* ===== Fix: altura fixa do gráfico para evitar loop de redimensionamento ===== */
+.grafico-wrapper {
+    position: relative;
+    height: 320px;
+    width: 100%;
+}

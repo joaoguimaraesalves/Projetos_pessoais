@@ -61,30 +61,34 @@ async function salvarConta(event) {
     event.target.reset();
     fecharModal('modal-conta');
     carregarContasPagar();
-    carregarDashboard();
-    desenharGrafico();
+if (document.getElementById('tela-dashboard').classList.contains('active')) {
+    atualizarDashboardCompleto();
+}
 }
 
 async function pagarConta(id) {
     if (!confirm('Marcar esta conta como paga?')) return;
     await fetchJSON(`/api/contas-pagar/${id}/pagar`, { method: 'PATCH' });
     carregarContasPagar();
-    carregarDashboard();
-    desenharGrafico();
+if (document.getElementById('tela-dashboard').classList.contains('active')) {
+    atualizarDashboardCompleto();
+}
 }
 
 async function desfazerPagamento(id) {
     if (!confirm('Desfazer este pagamento? A conta voltará a ficar pendente.')) return;
     await fetchJSON(`/api/contas-pagar/${id}/desfazer-pagamento`, { method: 'PATCH' });
     carregarContasPagar();
-    carregarDashboard();
-    desenharGrafico();
+if (document.getElementById('tela-dashboard').classList.contains('active')) {
+    atualizarDashboardCompleto();
+}
 }
 
 async function excluirContaPagar(id) {
     if (!confirm('Excluir esta conta a pagar?')) return;
     await fetchJSON(`/api/contas-pagar/${id}`, { method: 'DELETE' });
     carregarContasPagar();
-    carregarDashboard();
-    desenharGrafico();
+if (document.getElementById('tela-dashboard').classList.contains('active')) {
+    atualizarDashboardCompleto();
+}
 }
